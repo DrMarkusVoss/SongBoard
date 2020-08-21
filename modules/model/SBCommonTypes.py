@@ -6,8 +6,10 @@ class SBPartType(Enum):
     VERSE = 2
     CHORUS = 3
     BRIDGE = 4
-    OUTTRO = 5
-    INTERLUDE = 6
+    OUTRO = 5
+    BREAK = 6
+    SOLO = 7
+    INTERLUDE = 8
 
 
 class SBBeatType(Enum):
@@ -15,19 +17,21 @@ class SBBeatType(Enum):
     FOUR_FOUR = 1
     THREE_FOUR = 2
     SIX_EIGHT = 3
+    FIVE_EIGHT = 4
 
 class SBChordNote(Enum):
+    NOTHING = 0
     C = 1
-    C# = 2
+    Db = 2
     D = 3
-    D# = 4
+    Eb = 4
     E = 5
     F = 6
-    F# = 7
+    Gb = 7
     G = 8
-    G# = 9
+    Ab = 9
     A = 10
-    A# = 11
+    Bb = 11
     B = 12
 
 class SBChordHarmonic(Enum):
@@ -37,8 +41,9 @@ class SBChordHarmonic(Enum):
     NINTH = 4
 
 class SBArpKind(Enum):
+    NONE = 0
     LOW_TO_HIGH = 1
     HIGH_TO_LOW = 2
-    RANDOWM = 3
+    RANDOM = 3
     MIX_UP = 4
     MIX_DOWN = 5
