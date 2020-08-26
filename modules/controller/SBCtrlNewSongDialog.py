@@ -42,16 +42,13 @@ class SBCtrlNewSongDialog:
         but_cancel.grid(row=3, column=1)
 
     def ok(self):
-
-        print("value is", self.entry_songname.get())
-        print("beat is ", self.beat_default.get())
-
         newsong = SBSong(self.entry_songname.get())
         newsong.setTempo(int(self.entry_songtempo.get()))
+        newsong.setBeat(self.beat_default.get())
+
         self.parent.setSong(newsong)
 
         self.top.destroy()
 
     def cancel(self):
-
         self.top.destroy()

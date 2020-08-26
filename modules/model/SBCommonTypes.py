@@ -19,6 +19,7 @@ class SBBeatType(Enum):
     SIX_EIGHT = 3
     FIVE_EIGHT = 4
 
+
 class SBChordNote(Enum):
     NOTHING = 0
     C = 1
@@ -47,3 +48,4 @@ class SBArpKind(Enum):
     RANDOM = 3
     MIX_UP = 4
     MIX_DOWN = 5
+

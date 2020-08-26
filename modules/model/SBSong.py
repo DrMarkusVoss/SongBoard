@@ -13,4 +13,13 @@ class SBSong:
     def setTempo(self, tempo):
         self.tempo = tempo
 
+    def getTempo(self):
+        return self.tempo
+
+    def setBeat(self, beat):
+        self.beat = beat
+
+    def getBeat(self):
+        return self.beat
+
 
