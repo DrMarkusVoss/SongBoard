@@ -7,6 +7,7 @@ class SBSong:
         self.tempo = 0
         self.beat = SBBeatType.FOUR_FOUR
 
+
     def getName(self):
         return self.name
 
@@ -18,6 +19,21 @@ class SBSong:
 
     def setBeat(self, beat):
         self.beat = beat
+
+    def getBeatsPerBar(self):
+        retval = 4
+        if (self.beat == SBBeatType.FOUR_FOUR):
+            retval = 4
+        elif (self.beat == SBBeatType.THREE_FOUR):
+            retval = 3
+
+        return retval
+
+    def addPart(self, part):
+        self.songparts.append(part)
+
+    def getParts(self):
+        return self.songparts
 
     def getBeat(self):
         return self.beat

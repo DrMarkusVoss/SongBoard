@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class SBPartType(Enum):
     SOMETHING = 0
     INTRO = 1
@@ -11,6 +12,24 @@ class SBPartType(Enum):
     SOLO = 7
     INTERLUDE = 8
 
+sbparttypedict = {SBPartType.SOMETHING: "SOMETHING",
+                  SBPartType.INTRO: "INTRO",
+                  SBPartType.VERSE: "VERSE",
+                  SBPartType.CHORUS: "CHORUS",
+                  SBPartType.BRIDGE: "BRIDGE",
+                  SBPartType.OUTRO: "OUTRO",
+                  SBPartType.BREAK: "BREAK",
+                  SBPartType.SOLO: "SOLO",
+                  SBPartType.INTERLUDE: "INTERLUDE"}
+
+sbpartreversetpyedict = {y:x for x,y in sbparttypedict.items()}
+
+
+def convertSBPartTypeToString(parttype):
+    return sbparttypedict[parttype]
+
+def convertStringToSBPartType(parttypestring):
+    return sbpartreversetpyedict[parttypestring]
 
 class SBBeatType(Enum):
     NOTHING = 0
@@ -40,6 +59,11 @@ class SBChordHarmonic(Enum):
     MINOR = 2
     SEVENTH = 3
     NINTH = 4
+
+def convertStringToSBChordHarmonic(charharmstr):
+    pass
+
+
 
 class SBArpKind(Enum):
     NONE = 0

@@ -19,9 +19,21 @@ class SBChord:
     def setNote(self, note):
         self.note = note
 
+    def getNoteStr(self):
+        return str(self.note.name)
+
     def setHarmonic(self, harmonic):
         self.harmonic = harmonic
 
     def setLengthInBars(self, bars):
         self.length_bars = bars
+
+    def getLengthInBars(self):
+        return self.length_bars
+
+    def getHarmonicStr(self):
+        return str(self.harmonic.name)
+
+    def getHarmonic(self):
+        return self.harmonic
 
