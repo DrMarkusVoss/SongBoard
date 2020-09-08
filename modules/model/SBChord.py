@@ -9,9 +9,16 @@ class SBChord:
         self.length_bars = 0
         self.arp = False
         self.arp_kind = SBArpKind.LOW_TO_HIGH
+        self.pitch = 0
 
     def setArp(self, onoff):
         self.arp = onoff
+
+    def setPitch(self, pitch):
+        self.pitch = pitch
+
+    def getPitch(self):
+        return self.pitch
 
     def setArpKind(self, kind):
         self.arp_kind = kind

@@ -59,6 +59,8 @@ class SBChordHarmonic(Enum):
     MINOR = 2
     SEVENTH = 3
     NINTH = 4
+    DIMINISHED = 5
+    AUGMENTED = 6
 
 def convertStringToSBChordHarmonic(charharmstr):
     pass

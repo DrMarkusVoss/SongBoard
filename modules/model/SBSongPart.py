@@ -15,12 +15,22 @@ class SBSongPart:
         self.tempo = 0
         self.beat = SBBeatType.FOUR_FOUR
         self.length_bars = 0
+        self.nr_repeats = 0
 
     def getName(self):
         return self.name
 
+    def setNrRepeats(self, nr_repeats):
+        self.nr_repeats = nr_repeats
+
+    def getNrRepeats(self):
+        return self.nr_repeats
+
     def setTempo(self, tempo):
         self.tempo = tempo
+
+    def getTempo(self):
+        return self.tempo
 
     def setBeat(self, beat):
         self.beat = beat

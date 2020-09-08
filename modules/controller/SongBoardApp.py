@@ -8,6 +8,7 @@ from modules.view.SBViewSongPart import SBViewSongPart
 from modules.controller.SBCtrlNewChordDialog import SBCtrlNewChordDialog
 from modules.controller.SBCtrlChordsToMidi import SBCtrlSongToMIDI
 from modules.controller.SBCtrlPlayMIDI import SBMIDIMusicPlayer
+from modules.model.SBSong import SBSong
 
 import pickle
 
@@ -42,6 +43,7 @@ class SongBoardApp(tk.Frame):
         self.selected_songpart = None
         self.selected_songpart_view = None
 
+
         self.create_widgets()
 
     def menuNewFile(self):
@@ -74,8 +76,6 @@ class SongBoardApp(tk.Frame):
 
         self.canvas.pack()
 
-        y = int(self.canvas_height / 2)
-        self.canvas.create_line(0, y, self.canvas_width, y, fill="#476042")
         self.canvas_songname = self.canvas.create_text(10, 20, text=self.song_name, anchor=tk.W)
         self.canvas_tempo = self.canvas.create_text(10, 40, text="BPM: " + str(self.song_tempo), anchor=tk.W)
         self.canvas_beat = self.canvas.create_text(10,60, text="Beat: " + self.song_beat, anchor = tk.W)
@@ -97,14 +97,19 @@ class SongBoardApp(tk.Frame):
         self.but_new_part.grid(row=0, column=2)
 
         self.but_play_audio = tk.Button(self)
-        self.but_play_audio["text"] = "Play Audio"
+        self.but_play_audio["text"] = "Play Song Audio"
         self.but_play_audio["command"] = self.playSongAudio
         self.but_play_audio.grid(row=0, column=3)
+
+        self.but_play_audio = tk.Button(self)
+        self.but_play_audio["text"] = "Play sel. Songpart Audio"
+        self.but_play_audio["command"] = self.playSelSongpartAudio
+        self.but_play_audio.grid(row=0, column=4)
 
 
         self.quit = tk.Button(self, text="QUIT", fg="red",
                               command=self.master.destroy)
-        self.quit.grid(row=0, column=4)
+        self.quit.grid(row=0, column=5)
 
 
     def setSong(self, song):
@@ -114,8 +119,10 @@ class SongBoardApp(tk.Frame):
         self.canvas.itemconfigure(self.canvas_beat, text="Beat: " + self.song.getBeat())
 
     def setSongParts(self):
+        cnt = 0
         for e in self.song.getParts():
-            self.addSongPartToCanvas(e)
+            self.addSongPartToCanvas(e, cnt)
+            cnt = cnt + 1
 
 
     def say_hi(self):
@@ -136,8 +143,8 @@ class SongBoardApp(tk.Frame):
         self.song.addPart(part)
         self.addSongPartToCanvas(part)
 
-    def addSongPartToCanvas(self, part):
-        sp = SBViewSongPart(self, self.canvas, part)
+    def addSongPartToCanvas(self, part, row):
+        sp = SBViewSongPart(self, self.canvas, part, row)
         self.canvas_elements.append(sp)
         self.selected_songpart = part
         self.selected_songpart_view = sp
@@ -146,6 +153,14 @@ class SongBoardApp(tk.Frame):
         self.selected_songpart_view.addChord(chord)
         self.selected_songpart_view.update()
 
+
+    def reselectSongpart(self, songpartview):
+        self.selected_songpart_view.select(False)
+        self.selected_songpart_view.update()
+        self.selected_songpart_view = songpartview
+        self.selected_songpart = songpartview.getSongpart()
+        self.selected_songpart_view.select(True)
+        self.selected_songpart_view.update()
 
 
     def createNewSongPart(self):
@@ -159,6 +174,18 @@ class SongBoardApp(tk.Frame):
         s2m.writeMIDIFile()
         mp = SBMIDIMusicPlayer("temp.mid")
         mp.play()
+
+    def playSelSongpartAudio(self):
+        print("play selected songpart audio")
+        newsong = SBSong("temp")
+        newsong.setBeat(self.song.getBeat())
+        newsong.setTempo(self.song.getTempo())
+        newsong.addPart(self.selected_songpart)
+        s2m = SBCtrlSongToMIDI(newsong, "temp.mid")
+        s2m.writeMIDIFile()
+        mp = SBMIDIMusicPlayer("temp.mid")
+        mp.play()
+
 
 
 

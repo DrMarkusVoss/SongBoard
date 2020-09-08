@@ -6,7 +6,10 @@ import tkinter as tk
 
 class SBViewChord(SBViewElement):
     def __init__(self, master, canvas, chord, parent, row, col):
-        SBViewElement.__init__(self,parent.getX()+col*40, parent.getY()+50+30*row)
+
+        self.xoffset = 10
+
+        SBViewElement.__init__(self, parent.getX()+self.xoffset+col*40, parent.getY()+50+30*row)
         self.parent = parent
         self.master = master
         self.chord = chord
@@ -31,6 +34,10 @@ class SBViewChord(SBViewElement):
                 harm_txt = "7"
             elif (self.chord.getHarmonicStr() == "NINTH"):
                 harm_txt = "9"
+            elif (self.chord.getHarmonicStr() == "DIMINISHED"):
+                harm_txt = "d"
+            elif (self.chord.getHarmonicStr() == "AUGMENTED"):
+                harm_txt = "a"
             else:
                 harm_txt = ""
         else:
@@ -51,7 +58,7 @@ class SBViewChord(SBViewElement):
         self.parent.update()
 
     def setCol(self, col):
-        self.setX(self.parent.getX()+col*40)
+        self.setX(self.parent.getX()+self.xoffset+col*40)
         self.updateMyGeometry()
 
     def setRow(self, row):
