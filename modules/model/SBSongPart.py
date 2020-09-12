@@ -16,9 +16,13 @@ class SBSongPart:
         self.beat = SBBeatType.FOUR_FOUR
         self.length_bars = 0
         self.nr_repeats = 0
+        self.chord_lines = []
 
     def getName(self):
         return self.name
+
+    def setName(self, name):
+        self.name = name
 
     def setNrRepeats(self, nr_repeats):
         self.nr_repeats = nr_repeats
@@ -52,6 +56,22 @@ class SBSongPart:
 
     def getPartType(self):
         return self.parttype
+
+    def deleteChord(self, chord_ind):
+        self.chords.pop(chord_ind)
+
+    def addTextline(self, textline):
+        self.parttext.append(textline)
+
+    def deleteTextline(self, tl_ind):
+        self.parttext.pop(tl_ind)
+
+    def getTextlines(self):
+        return self.parttext
+
+    def getTextline(self, tl_ind):
+        return self.parttext[ind]
+
 
 
 

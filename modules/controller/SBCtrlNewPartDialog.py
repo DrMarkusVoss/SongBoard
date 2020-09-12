@@ -29,7 +29,7 @@ class SBCtrlNewPartDialog:
         self.entry_songname = Entry(top, textvariable=StringVar(top, str_name))
         self.entry_songname.grid(row=0, column=1)
 
-        l_nrrepeats = Label(top, text="Number of repeats:")
+        l_nrrepeats = Label(top, text="Number of cycles:")
         l_nrrepeats.grid(row=1, column=0)
 
         self.entry_nrrepeats = Entry(top, textvariable=StringVar(top, str_nrrepeats))
@@ -87,6 +87,7 @@ class SBCtrlNewPartDialog:
             self.songpart.setTempo(int(self.entry_songtempo.get()))
             self.songpart.setBeat(self.beat_default.get())
             self.songpart.setNrRepeats(int(self.entry_nrrepeats.get()))
+            self.songpart.setName(self.entry_songname.get())
 
         self.top.destroy()
 

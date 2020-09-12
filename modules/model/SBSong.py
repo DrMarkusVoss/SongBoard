@@ -11,6 +11,9 @@ class SBSong:
     def getName(self):
         return self.name
 
+    def setName(self, name):
+        self.name = name
+
     def setTempo(self, tempo):
         self.tempo = tempo
 
