@@ -2,17 +2,25 @@
 
 skinparam componentStyle uml2
 
-title SongBoard Context Diagram
+title SongBoard Detailed Context Diagram
 
+rectangle "This detailed context diagram contains also \nthe elements that might in future influence \nthe development of SongBoard." <<note>> as topnote {
+}
 
-:AmateurComposer:
-:SongBoardDeveloper:
+skinparam rectangle{
+BackgroundColor<<note>> LemonChiffon
+BorderColor<<note>> Red
+}
 
+:Amateur\nComposer: as ac
+:SongBoard\nDeveloper: as sd
+
+topnote -[hidden]-> ac
  
 rectangle "SongBoard" <<application>> as sb {
     cloud SongBoardUI { 
     } 
-    (Find out the right workflow \n for composing songs) as ucdw
+    (Find out the right workflow \nfor composing songs) as ucdw
     SongBoardUI .. ucdw
 } 
 
@@ -89,9 +97,9 @@ node "Drum Machine" as bb {
 MacOS -[hidden]-> Python
 Python -[hidden]-> lpx
 
-AmateurComposer --> SongBoardUI : use to compose
+ac --> SongBoardUI : use to compose
 sb -down-> MacBookPro: runs on
-AmateurComposer ..> MacBookPro : owns
+ac ..> MacBookPro : owns
 AudioInterface -- MacBookPro : USB
 dui -- MacBookPro : USB
 mk -- dui : USB
@@ -109,7 +117,7 @@ mixer -- asr : XLR
 bb --> mixer : line_left
 bb --> mixer : line_right
 
-SongBoardDeveloper --> ucdw : work on
+sd -r-> ucdw : work on
 
 dui ..> lpx : controls
 

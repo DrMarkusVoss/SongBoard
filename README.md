@@ -13,4 +13,4 @@ Idea list:
 - native app for iOS
 
 See this architecture context diagram for an overview:
-![](./arch/01_context/SongBoard_Context.png)
+![](./arch/01_context/SongBoard_Context_simple.png)
