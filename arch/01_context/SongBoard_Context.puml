@@ -39,7 +39,7 @@ cloud Python {
 
 cloud LogicProX as lpx {
  }
- note left of lpx: version >= 10.6
+ note left of lpx: version >= 10.5.1
 
 } 
 

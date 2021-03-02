@@ -1,6 +1,6 @@
 @startuml
 
-title SongBoard - Use Case Diagram
+title SongBoard - Use Cases with Context Diagram
 
 
 rectangle SongBoard <<application>> {
@@ -16,6 +16,12 @@ rectangle SongBoard <<application>> {
     (Export Song to Logic Pro X) as expo
 }
 
+rectangle LogicProX <<application>> {
+    (Import Song from SongBoard) as impo
+    (Record tracks with real \ninstruments and vocals)
+    (Mix tracks)
+    (Master song)
+}
 
 
 :AmateurComposer:
@@ -23,14 +29,14 @@ rectangle SongBoard <<application>> {
 AmateurComposer --> prv
 AmateurComposer --> song
 AmateurComposer --> expo
-
+AmateurComposer --> LogicProX
 
 song-->sp : 1..*
 song-->sd : 1..1
 sp-->ch : 1..*
 sp-->spd: 1..1
 ch-->chd : 1..1
-
+expo ..> impo
 prv-->spp
 prv-->spv
 
