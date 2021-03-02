@@ -13,7 +13,7 @@ class SBViewChord(SBViewElement):
         self.chord = chord
         self.am_i_selected = False
 
-        SBViewElement.__init__(self, parent.getX()+self.xoffset+col*40, parent.getY()+50+30*row, self.chord.getLengthInBars() * 40, 20)
+        SBViewElement.__init__(self, parent.getX()+self.xoffset+col*40, parent.getY()+50+50*row, self.chord.getLengthInBars() * 40, 20)
 
         self.canvas = canvas
         #self.width = self.chord.getLengthInBars() * 40
@@ -53,6 +53,10 @@ class SBViewChord(SBViewElement):
         self.canvas.delete(self.rect)
         self.canvas.delete(self.text)
 
+    def getXMax(self):
+        crds = self.canvas.coords(self.rect)
+        return crds[2]
+
     def updateMyGeometry(self):
         self.width = self.chord.getLengthInBars() * 40
         self.canvas.coords(self.rect, self.x, self.y, self.x + self.width, self.y + self.height)
@@ -76,7 +80,7 @@ class SBViewChord(SBViewElement):
         self.updateMyGeometry()
 
     def setRow(self, row):
-        self.setY(self.parent.getY()+50+30*row)
+        self.setY(self.parent.getY()+50+50*row)
         self.updateMyGeometry()
 
 
@@ -98,6 +102,7 @@ class SBViewChord(SBViewElement):
         self.am_i_selected = trueorfalse
 
     def iAmSelected(self, event):
+        #print("me is selected")
         self.parent.selectChord(self)
 
 

@@ -1,0 +1,88 @@
+@startuml
+
+skinparam componentStyle uml2
+
+title SongBoard Context Diagram
+
+
+:AmateurComposer:
+:SongBoardDeveloper:
+
+ 
+rectangle "SongBoard" <<application>> as sb {
+    cloud SongBoardUI { 
+    } 
+    (Find out the right workflow \n for composing songs) as ucdw
+    SongBoardUI .. ucdw
+} 
+
+note top of sb
+    Prototype application.
+    Might make a iOS app out 
+    of it later if it works.
+end note
+
+note top of sb
+    Implementation in Python
+    using tkinter for GUI 
+    for fast prototyping.
+end note
+
+node MacBookPro {
+cloud MacOS {
+}
+ note left of MacOS : version >= 10.14.6
+
+cloud Python {
+ }
+ note left of Python: version >= 3.8.2
+
+cloud LogicProX as lpx {
+ }
+ note left of lpx: version >= 10.6
+
+} 
+
+node AudioInterface {
+
+}
+
+node DAW-UI  as dui {
+
+}
+
+node MIDI-Keys  as mk{
+
+}
+
+node Mixer as mixer {
+     
+}
+
+node ActiveSpeaker-L as asl {
+
+}
+
+node ActiveSpeaker-R as asr {
+
+}
+
+MacOS -[hidden]-> Python
+Python -[hidden]-> lpx
+
+AmateurComposer --> SongBoardUI : use to compose
+sb -down-> MacBookPro: runs on
+AmateurComposer ..> MacBookPro : owns
+AudioInterface -- MacBookPro : USB
+dui -- MacBookPro : USB
+mk -- dui : USB
+AudioInterface -- mixer : line
+mixer -- asl : XLR
+mixer -- asr : XLR
+
+SongBoardDeveloper --> ucdw : work on
+
+dui ..> lpx : controls
+
+
+@enduml

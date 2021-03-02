@@ -11,8 +11,6 @@ class SBCtrlNewSongDialog:
         top = self.top = Toplevel(parent)
         top.title("New Song")
 
-
-
         if (self.song == None):
             sname = StringVar(top, "")
             tempo = StringVar(top,"120")

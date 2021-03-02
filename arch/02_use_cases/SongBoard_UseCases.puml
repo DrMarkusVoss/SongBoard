@@ -1,0 +1,44 @@
+@startuml
+
+title SongBoard - Use Case Diagram
+
+
+rectangle SongBoard {
+    (Create/Modify Song) as song
+    (Preview) as prv
+    (Play Song Preview) as spv
+    (Create/Modify Songpart) as sp
+    (Play Songpart Preview) as spp
+    (Create/Modify Chord) as ch
+    (Define Song details) as sd
+    (Define Songpart details) as spd
+    (Define Chord details) as chd
+    (Export Song to Logic Pro X) as expo
+}
+
+rectangle LogicProX {
+    (Import Song from SongBoard) as impo
+    (Record tracks with real \ninstruments and vocals)
+    (Create real beats)
+    (Mix tracks)
+    (Master song)
+}
+
+
+:Composer:
+
+Composer --> prv
+Composer --> song
+Composer --> expo
+Composer --> LogicProX
+
+song-->sp : 1..*
+song-->sd : 1..1
+sp-->ch : 1..*
+sp-->spd: 1..1
+ch-->chd : 1..1
+expo ..> impo
+prv-->spp
+prv-->spv
+
+@enduml

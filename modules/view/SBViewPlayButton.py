@@ -7,7 +7,7 @@ class SBViewPlayButton(SBViewElement):
         self.canvas = canvas
         self.parent = parent
 
-        SBViewElement.__init__(self, self.parent.getX() + self.parent.getWidth() - 50, self.parent.getY()+20, 30, 30)
+        SBViewElement.__init__(self, self.parent.getX() + self.parent.getWidth() - 40, self.parent.getY()+10, 30, 30)
 
         self.circbut = self.canvas.create_oval(self.x, self.y, self.x + self.getWidth(), self.y + self.getHeight(),fill="white")
         self.trianglebut = self.canvas.create_polygon(self.x + 10, self.y + 5, self.x + 10, self.y + 25, self.x + 25,
