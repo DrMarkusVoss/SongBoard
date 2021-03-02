@@ -13,14 +13,4 @@ Idea list:
 - native app for iOS
 
 See this architecture context diagram for an overview:
-
-<div hidden>
-    @startuml firstDiagram
-    Alice -> Bob: Hello
-    Bob -> Alice: Hi!
-    @enduml
-</div>
-
-![](firstDiagram.svg)
-
-Some more markdown.
+![](./arch/01_context/SongBoard_Context.png)
