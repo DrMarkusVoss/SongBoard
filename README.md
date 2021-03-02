@@ -15,14 +15,10 @@ Idea list:
 See this architecture context diagram for an overview:
 
 <div hidden>
-```
-@startuml firstDiagram
-
-Alice -> Bob: Hello
-Bob -> Alice: Hi!
-		
-@enduml
-```
+    @startuml firstDiagram
+    Alice -> Bob: Hello
+    Bob -> Alice: Hi!
+    @enduml
 </div>
 
 ![](firstDiagram.svg)
