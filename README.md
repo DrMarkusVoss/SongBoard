@@ -12,3 +12,19 @@ Idea list:
 - easy transfer of the song ideas to Logic Pro X and maybe also Garage Band
 - native app for iOS
 
+See this architecture context diagram for an overview:
+
+<div hidden>
+```
+@startuml firstDiagram
+
+Alice -> Bob: Hello
+Bob -> Alice: Hi!
+		
+@enduml
+```
+</div>
+
+![](firstDiagram.svg)
+
+Some more markdown.
