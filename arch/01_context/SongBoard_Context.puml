@@ -59,6 +59,15 @@ node Mixer as mixer {
      
 }
 
+node "Large Diaphragm \nCondenser Microphone" as mic {
+}
+
+node "Dynamic Microphone" as mic2 {
+}
+
+node "Podcast Microphone" as mic3 {
+}
+
 node ActiveSpeaker-L as asl {
 
 }
@@ -66,6 +75,16 @@ node ActiveSpeaker-L as asl {
 node ActiveSpeaker-R as asr {
 
 }
+
+node "Guitar Amp Modeller & Fx" as FM3 {
+}
+
+node "Electric Guitar" as guitar {
+}
+
+node "Drum Machine" as bb {
+}
+
 
 MacOS -[hidden]-> Python
 Python -[hidden]-> lpx
@@ -76,9 +95,19 @@ AmateurComposer ..> MacBookPro : owns
 AudioInterface -- MacBookPro : USB
 dui -- MacBookPro : USB
 mk -- dui : USB
-AudioInterface -- mixer : line
+AudioInterface --> mixer : line_stereo
+mixer --> AudioInterface : line_left
+mixer --> AudioInterface : line_right
+mic -- AudioInterface : XLR 48V
+mic2 --> mixer : XLR
+mic3 --> MacBookPro : USB
+FM3 --> mixer : XLR left
+FM3 --> mixer : XLR right
+guitar --> FM3
 mixer -- asl : XLR
 mixer -- asr : XLR
+bb --> mixer : line_left
+bb --> mixer : line_right
 
 SongBoardDeveloper --> ucdw : work on
 
