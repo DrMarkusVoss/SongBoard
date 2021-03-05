@@ -1,5 +1,5 @@
 @startuml
-
+!include SongBoard_Context_simple.puml
 skinparam componentStyle uml2
 
 title SongBoard Detailed Context Diagram
@@ -12,44 +12,9 @@ BackgroundColor<<note>> LemonChiffon
 BorderColor<<note>> Red
 }
 
-:Amateur\nComposer: as ac
-:SongBoard\nDeveloper: as sd
 
 topnote -[hidden]-> ac
- 
-rectangle "SongBoard" <<application>> as sb {
-    cloud SongBoardUI { 
-    } 
-    (Find out the right workflow \nfor composing songs) as ucdw
-    SongBoardUI .. ucdw
-} 
 
-note top of sb
-    Prototype application.
-    Might make a iOS app out 
-    of it later if it works.
-end note
-
-note top of sb
-    Implementation in Python
-    using tkinter for GUI 
-    for fast prototyping.
-end note
-
-node MacBookPro {
-cloud MacOS {
-}
- note left of MacOS : version >= 10.14.6
-
-cloud Python {
- }
- note left of Python: version >= 3.8.2
-
-cloud LogicProX as lpx {
- }
- note left of lpx: version >= 10.5.1
-
-} 
 
 node AudioInterface {
 
@@ -94,12 +59,6 @@ node "Drum Machine" as bb {
 }
 
 
-MacOS -[hidden]-> Python
-Python -[hidden]-> lpx
-
-ac --> SongBoardUI : use to compose
-sb -down-> MacBookPro: runs on
-ac ..> MacBookPro : owns
 AudioInterface -- MacBookPro : USB
 dui -- MacBookPro : USB
 mk -- dui : USB
@@ -116,8 +75,6 @@ mixer -- asl : XLR
 mixer -- asr : XLR
 bb --> mixer : line_left
 bb --> mixer : line_right
-
-sd -r-> ucdw : work on
 
 dui ..> lpx : controls
 
