@@ -12,7 +12,7 @@ class SBMIDIMusicPlayer:
         return self.midi_filename
 
     def playMusicFromMIDIFile(self):
-        '''Stream music_file in a blocking manner'''
+        # play the midi file in a blocking manner
         clock = pygame.time.Clock()
         pygame.mixer.music.load(self.midi_filename)
         pygame.mixer.music.play()

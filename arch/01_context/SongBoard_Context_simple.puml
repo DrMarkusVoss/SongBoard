@@ -51,5 +51,6 @@ sb -down-> MacBookPro: runs on
 ac ..> MacBookPro : owns
 
 sd -r-> ucdw : work on
+sd --> sb : work on
 
 @enduml
